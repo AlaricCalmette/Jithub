@@ -1,6 +1,5 @@
 import json
 from http.server import HTTPServer
-from jira import JIRA
 from requestHandler import GithubRequestHandler
 
 with open('serverConfig.json') as serverConfig:

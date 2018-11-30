@@ -1,0 +1,42 @@
+{
+    "jira": {
+        "projectKey": "<your-project>",
+        "oauth_token": "this will be change by oauthflow.py",
+        "oauth_secret": "this will be change by oauthflow.py",
+        "cert_path": "jithub.pem",
+        "consumer_key": "<jira-link-consumer-key>",
+        "instance_address": "https://myjira.atlassian.net"
+    },
+    "github": {
+        "token": "<github-token>"
+    },
+    "action_mapping": {
+        "labeled": {
+            "in_staging": {
+                "name": "deployed_in_staging"
+            },
+            "in_production": {
+               "name": "deployed_in_production"
+            },
+            "on_master": {
+                "name": "deployed_on_master"
+            },
+            "abandoned": {
+                "name": "Abandoned",
+                "fields": {
+                    "customfield_12345": {
+                        "value": "Duplicate"
+                    }
+                }
+            }
+        },
+        "unlabeled": {
+            "wip": {
+                "name": "In Code Review"
+            }
+        },
+        "merged": {
+            "name": "Merged"
+        }
+    }
+}

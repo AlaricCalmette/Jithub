@@ -53,7 +53,7 @@ You're all set, Github will start sending events to the Jithub server. Every eve
 - `cd <path-to-jithub>`
 - `docker build -t <fancy-name> .`
 
-Now you have a working docker image. I wont cover all the steps to run this images into all the available services but here is a Heroku how-to:
+Now you have a working docker image. I won't cover all the steps to run this images into all the available services but here is a Heroku how-to:
 
 - `heroku login`
 - `heroku create`

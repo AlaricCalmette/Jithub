@@ -1,6 +1,6 @@
 import json
 import re
-from jira_connection import jira
+from jira_connection import jira_link
 from Github import github
 
 with open('config.json') as config:
@@ -17,7 +17,7 @@ def handle_opened(body):
     gh = github(config['github_token'])
     ticket = test.group(0)
     print('should act on ticket %s' %(ticket))
-    jira_ticket = jira.issue(ticket)
+    jira_ticket = jira_link.issue(ticket)
     transitions = config_dict['action_mapping']['opened']
     usable_transition = None
     for transition in transitions:

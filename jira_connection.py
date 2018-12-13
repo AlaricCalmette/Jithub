@@ -18,4 +18,4 @@ oauth_dict = {
     'key_cert': key_cert_data
 }
 
-jira = JIRA(config_dict['jira']['instance_address'], oauth=oauth_dict)
+jira_link = JIRA(config_dict['jira']['instance_address'], oauth=oauth_dict)

@@ -1,6 +1,6 @@
 import json
 import re
-from jira_connection import jira
+from jira_connection import jira_link
 
 with open('config.json') as config:
   config_dict = json.load(config)
@@ -15,7 +15,7 @@ def handle_labeled_unlabeled(body):
   if test:
     ticket = test.group(0)
     print('Should act on jira ticket %s' %(ticket))
-    jira_ticket = jira.issue(ticket)
+    jira_ticket = jira_link.issue(ticket)
 
     try:
       transition = config_dict['action_mapping'][body['action']][body['label']['name']]
@@ -23,7 +23,7 @@ def handle_labeled_unlabeled(body):
     except KeyError:
       raise Exception('No config matching label %s was found' %(body['label']['name']))
 
-    transitionId = jira.find_transitionid_by_name(jira_ticket.id, transitionName)
+    transitionId = jira_link.find_transitionid_by_name(jira_ticket.id, transitionName)
     if transitionId is not None:
       try:
         jira_ticket.update(transition['fields'])
@@ -34,5 +34,5 @@ def handle_labeled_unlabeled(body):
     else:
       raise Exception('Transition %s does not exist or is not available for %s' %(transitionName, jira_ticket.key))
 
-    jira.transition_issue(jira_ticket, transitionId, comment='jithub')
+    jira_link.transition_issue(jira_ticket, transitionId, comment='jithub')
     print('%s has been applied on %s' %(transitionName, jira_ticket.key))
